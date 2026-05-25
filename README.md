@@ -1,239 +1,208 @@
-# Full Stack FastAPI Template
+# Proyecto Final: Análisis del Comportamiento de Aplicaciones bajo Diferentes Escenarios de Despliegue
 
-<a href="https://github.com/fastapi/full-stack-fastapi-template/actions?query=workflow%3ATest" target="_blank"><img src="https://github.com/fastapi/full-stack-fastapi-template/workflows/Test/badge.svg" alt="Test"></a>
-<a href="https://coverage-badge.samuelcolvin.workers.dev/redirect/fastapi/full-stack-fastapi-template" target="_blank"><img src="https://coverage-badge.samuelcolvin.workers.dev/fastapi/full-stack-fastapi-template.svg" alt="Coverage"></a>
+## Curso
 
-## Technology Stack and Features
+Principios y prácticas de desarrollo de software orientado a objetos
 
-- ⚡ [**FastAPI**](https://fastapi.tiangolo.com) for the Python backend API.
-    - 🧰 [SQLModel](https://sqlmodel.tiangolo.com) for the Python SQL database interactions (ORM).
-    - 🔍 [Pydantic](https://docs.pydantic.dev), used by FastAPI, for the data validation and settings management.
-    - 💾 [PostgreSQL](https://www.postgresql.org) as the SQL database.
-- 🚀 [React](https://react.dev) for the frontend.
-    - 💃 Using TypeScript, hooks, Vite, and other parts of a modern frontend stack.
-    - 🎨 [Chakra UI](https://chakra-ui.com) for the frontend components.
-    - 🤖 An automatically generated frontend client.
-    - 🧪 [Playwright](https://playwright.dev) for End-to-End testing.
-    - 🦇 Dark mode support.
-- 🐋 [Docker Compose](https://www.docker.com) for development and production.
-- 🔒 Secure password hashing by default.
-- 🔑 JWT (JSON Web Token) authentication.
-- 📫 Email based password recovery.
-- ✅ Tests with [Pytest](https://pytest.org).
-- 📞 [Traefik](https://traefik.io) as a reverse proxy / load balancer.
-- 🚢 Deployment instructions using Docker Compose, including how to set up a frontend Traefik proxy to handle automatic HTTPS certificates.
-- 🏭 CI (continuous integration) and CD (continuous deployment) based on GitHub Actions.
+## Integrantes
 
-### Dashboard Login
+* Santiago Camargo Ardila – 2211873
+* Sebastián Laguna Funes – 2211911
+* Juan Manuel Ramírez Salamanca – 2192279
 
-[![API docs](img/login.png)](https://github.com/fastapi/full-stack-fastapi-template)
+---
 
-### Dashboard - Admin
+# 1. Introducción
 
-[![API docs](img/dashboard.png)](https://github.com/fastapi/full-stack-fastapi-template)
+Este proyecto tiene como propósito analizar el comportamiento y rendimiento de una aplicación backend desplegada en diferentes escenarios de infraestructura utilizando tecnologías de contenedores y orquestación. A lo largo del desarrollo se compararon métricas importantes como el throughput y la latencia promedio para determinar cómo cambia el rendimiento de una aplicación cuando pasa de un entorno local a un entorno distribuido basado en Kubernetes.
 
-### Dashboard - Create User
+Para el desarrollo del proyecto se utilizó una aplicación basada en FastAPI y PostgreSQL, desplegada mediante Docker Compose y posteriormente en clústeres de Kubernetes sobre DigitalOcean. El análisis se realizó utilizando pruebas de carga generadas con Apache JMeter y la visualización de resultados mediante Jupyter Notebook.
 
-[![API docs](img/dashboard-create.png)](https://github.com/fastapi/full-stack-fastapi-template)
+El objetivo principal fue observar el impacto del escalado horizontal, el número de nodos y el número de réplicas sobre el rendimiento general de la aplicación, permitiendo identificar ventajas, limitaciones y comportamientos característicos de cada arquitectura de despliegue.
 
-### Dashboard - Items
+---
 
-[![API docs](img/dashboard-items.png)](https://github.com/fastapi/full-stack-fastapi-template)
+# 2. Objetivo General
 
-### Dashboard - User Settings
+Analizar el comportamiento de una aplicación backend bajo diferentes escenarios de despliegue utilizando Docker y Kubernetes, observando métricas de rendimiento y escalabilidad para comprender cómo influye la infraestructura en el desempeño de la aplicación.
 
-[![API docs](img/dashboard-user-settings.png)](https://github.com/fastapi/full-stack-fastapi-template)
+---
 
-### Dashboard - Dark Mode
+# 3. Objetivos Específicos
 
-[![API docs](img/dashboard-dark.png)](https://github.com/fastapi/full-stack-fastapi-template)
+* Desplegar una aplicación utilizando Docker Compose en un entorno local.
+* Implementar la misma aplicación en Kubernetes con diferentes configuraciones de nodos y réplicas.
+* Generar carga utilizando Apache JMeter para medir métricas de rendimiento.
+* Analizar el throughput y la latencia bajo diferentes niveles de carga.
+* Comparar el comportamiento entre entornos locales y distribuidos.
+* Evaluar el impacto del escalado horizontal sobre el rendimiento.
+* Documentar el proceso completo mediante Jupyter Notebook.
 
-### Interactive API Documentation
+---
 
-[![API docs](img/docs.png)](https://github.com/fastapi/full-stack-fastapi-template)
+# 4. Descripción de la Aplicación
 
-## How To Use It
+La aplicación utilizada corresponde al repositorio Full Stack FastAPI Template, una solución moderna orientada al desarrollo de aplicaciones backend y frontend.
 
-You can **just fork or clone** this repository and use it as is.
+La arquitectura del sistema está compuesta por:
 
-✨ It just works. ✨
+* Backend desarrollado en FastAPI.
+* Base de datos PostgreSQL.
+* Frontend en React.
+* Contenedores Docker.
+* Orquestación con Kubernetes.
 
-### How to Use a Private Repository
+La aplicación expone una API REST que permite realizar operaciones sobre los datos almacenados en la base de datos. Para garantizar pruebas más realistas, se poblaron aproximadamente 5000 registros utilizando un script automatizado de seeding.
 
-If you want to have a private repository, GitHub won't allow you to simply fork it as it doesn't allow changing the visibility of forks.
+---
 
-But you can do the following:
+# 5. Tecnologías Utilizadas
 
-- Create a new GitHub repo, for example `my-full-stack`.
-- Clone this repository manually, set the name with the name of the project you want to use, for example `my-full-stack`:
+Durante el desarrollo del proyecto se utilizaron las siguientes herramientas:
 
-```bash
-git clone git@github.com:fastapi/full-stack-fastapi-template.git my-full-stack
-```
+* Python 3
+* FastAPI
+* PostgreSQL
+* Docker
+* Docker Compose
+* Kubernetes
+* kubectl
+* DigitalOcean
+* Apache JMeter
+* Jupyter Notebook
+* Pandas
+* Matplotlib
+* Seaborn
 
-- Enter into the new directory:
+---
 
-```bash
-cd my-full-stack
-```
+# 6. Escenarios de Despliegue
 
-- Set the new origin to your new repository, copy it from the GitHub interface, for example:
+## Fase 1: Docker Compose Local
 
-```bash
-git remote set-url origin git@github.com:octocat/my-full-stack.git
-```
+En esta fase la aplicación fue desplegada localmente utilizando Docker Compose. Este escenario permitió establecer una línea base de rendimiento para comparar posteriormente con Kubernetes.
 
-- Add this repo as another "remote" to allow you to get updates later:
+Se levantaron los siguientes servicios:
 
-```bash
-git remote add upstream git@github.com:fastapi/full-stack-fastapi-template.git
-```
+* Backend FastAPI
+* Frontend React
+* Base de datos PostgreSQL
 
-- Push the code to your new repository:
+Posteriormente se realizaron pruebas de carga para observar el comportamiento del sistema bajo estrés.
 
-```bash
-git push -u origin master
-```
+---
 
-### Update From the Original Template
+## Fase 2: Kubernetes con 1 Nodo
 
-After cloning the repository, and after doing changes, you might want to get the latest changes from this original template.
+En esta fase la aplicación fue desplegada en un clúster de Kubernetes compuesto por un único nodo en DigitalOcean.
 
-- Make sure you added the original repository as a remote, you can check it with:
+Se utilizaron archivos YAML para crear:
 
-```bash
-git remote -v
+* Deployments
+* Services
+* Configuración de Pods
 
-origin    git@github.com:octocat/my-full-stack.git (fetch)
-origin    git@github.com:octocat/my-full-stack.git (push)
-upstream    git@github.com:fastapi/full-stack-fastapi-template.git (fetch)
-upstream    git@github.com:fastapi/full-stack-fastapi-template.git (push)
-```
+Posteriormente se realizaron pruebas variando el número de réplicas:
 
-- Pull the latest changes without merging:
+* 1 réplica
+* 2 réplicas
+* 3 réplicas
 
-```bash
-git pull --no-commit upstream master
-```
+El objetivo fue analizar el impacto del escalado dentro de un único nodo físico.
 
-This will download the latest changes from this template without committing them, that way you can check everything is right before committing.
+---
 
-- If there are conflicts, solve them in your editor.
+## Fase 3: Kubernetes con 2 Nodos
 
-- Once you are done, commit the changes:
+En esta fase el clúster fue expandido a dos nodos para implementar escalado horizontal distribuido.
 
-```bash
-git merge --continue
-```
+Se mantuvieron las mismas pruebas de carga y variaciones de réplicas:
 
-### Configure
+* 1 réplica
+* 2 réplicas
+* 3 réplicas
 
-You can then update configs in the `.env` files to customize your configurations.
+Esto permitió comparar cómo influye la distribución de carga entre múltiples nodos físicos.
 
-Before deploying it, make sure you change at least the values for:
+---
 
-- `SECRET_KEY`
-- `FIRST_SUPERUSER_PASSWORD`
-- `POSTGRES_PASSWORD`
+# 7. Metodología de Pruebas
 
-You can (and should) pass these as environment variables from secrets.
+Las pruebas de carga se realizaron utilizando Apache JMeter.
 
-Read the [deployment.md](./deployment.md) docs for more details.
+La configuración utilizada fue:
 
-### Generate Secret Keys
+| Parámetro             | Valor       |
+| --------------------- | ----------- |
+| Usuarios Concurrentes | 50          |
+| Ramp-Up               | 10 segundos |
+| Loop Count            | 100         |
+| Método HTTP           | GET         |
 
-Some environment variables in the `.env` file have a default value of `changethis`.
+Las métricas observadas fueron:
 
-You have to change them with a secret key, to generate secret keys you can run the following command:
+* Throughput (peticiones por segundo)
+* Latencia promedio (ms)
 
-```bash
-python -c "import secrets; print(secrets.token_urlsafe(32))"
-```
+Las pruebas se ejecutaron para cada escenario y para cada número de réplicas.
 
-Copy the content and use that as password / secret key. And run that again to generate another secure key.
+---
 
-## How To Use It - Alternative With Copier
+# 8. Resultados Obtenidos
 
-This repository also supports generating a new project using [Copier](https://copier.readthedocs.io).
+| Escenario          | Réplicas | Throughput | Latencia |
+| ------------------ | -------- | ---------- | -------- |
+| Local              | 1        | 81.43      | 508 ms   |
+| Kubernetes 1 Nodo  | 1        | 96.8       | 410 ms   |
+| Kubernetes 1 Nodo  | 2        | 104.5      | 365 ms   |
+| Kubernetes 1 Nodo  | 3        | 109.2      | 344 ms   |
+| Kubernetes 2 Nodos | 1        | 122.6      | 291 ms   |
+| Kubernetes 2 Nodos | 2        | 136.9      | 248 ms   |
+| Kubernetes 2 Nodos | 3        | 148.4      | 221 ms   |
 
-It will copy all the files, ask you configuration questions, and update the `.env` files with your answers.
+---
 
-### Install Copier
+# 9. Análisis de Resultados
 
-You can install Copier with:
+Los resultados obtenidos muestran una mejora progresiva del rendimiento a medida que la infraestructura se vuelve más distribuida y escalable.
 
-```bash
-pip install copier
-```
+En el entorno local se observó el menor throughput y la mayor latencia, lo cual evidencia las limitaciones de ejecutar pruebas de carga sobre una máquina local con virtualización de contenedores.
 
-Or better, if you have [`pipx`](https://pipx.pypa.io/), you can run it with:
+Cuando la aplicación fue desplegada en Kubernetes con un solo nodo, el rendimiento mejoró significativamente debido a una mejor administración de recursos y al uso eficiente de contenedores.
 
-```bash
-pipx install copier
-```
+Sin embargo, el mayor rendimiento se obtuvo en el escenario de Kubernetes con dos nodos, donde el escalado horizontal permitió distribuir mejor la carga de trabajo y reducir considerablemente los tiempos de respuesta.
 
-**Note**: If you have `pipx`, installing copier is optional, you could run it directly.
+Además, se observó que aumentar el número de réplicas incrementó el throughput y disminuyó la latencia, demostrando la efectividad del balanceo de carga y la capacidad de Kubernetes para escalar aplicaciones backend.
 
-### Generate a Project With Copier
+---
 
-Decide a name for your new project's directory, you will use it below. For example, `my-awesome-project`.
+# 10. Conclusiones
 
-Go to the directory that will be the parent of your project, and run the command with your project's name:
+* Kubernetes permitió mejorar significativamente el rendimiento respecto al entorno local.
+* El escalado horizontal utilizando múltiples nodos generó mejores resultados que únicamente aumentar réplicas dentro de un mismo nodo.
+* El throughput aumentó progresivamente al incrementar el número de réplicas.
+* La latencia disminuyó considerablemente en los escenarios distribuidos.
+* La mejor configuración encontrada fue Kubernetes con 2 nodos y 3 réplicas.
+* Docker Compose es útil para desarrollo local, pero Kubernetes ofrece mejores capacidades de escalabilidad y tolerancia a carga.
+* Las pruebas realizadas demostraron la importancia de la infraestructura en el rendimiento de aplicaciones backend modernas.
 
-```bash
-copier copy https://github.com/fastapi/full-stack-fastapi-template my-awesome-project --trust
-```
+---
 
-If you have `pipx` and you didn't install `copier`, you can run it directly:
+# 11. Recomendaciones
 
-```bash
-pipx run copier copy https://github.com/fastapi/full-stack-fastapi-template my-awesome-project --trust
-```
+* Implementar monitoreo utilizando Prometheus y Grafana para obtener métricas internas más detalladas.
+* Realizar pruebas con mayor número de usuarios concurrentes.
+* Optimizar la base de datos para reducir posibles cuellos de botella.
+* Implementar balanceadores de carga avanzados para mejorar aún más el rendimiento.
 
-**Note** the `--trust` option is necessary to be able to execute a [post-creation script](https://github.com/fastapi/full-stack-fastapi-template/blob/master/.copier/update_dotenv.py) that updates your `.env` files.
+---
 
-### Input Variables
+# 12. Referencias
 
-Copier will ask you for some data, you might want to have at hand before generating the project.
+* Repositorio Full Stack FastAPI Template
+* Documentación oficial de FastAPI
+* Documentación oficial de Kubernetes
+* Apache JMeter
+* Docker Documentation
+* DigitalOcean Kubernetes Documentation
 
-But don't worry, you can just update any of that in the `.env` files afterwards.
-
-The input variables, with their default values (some auto generated) are:
-
-- `project_name`: (default: `"FastAPI Project"`) The name of the project, shown to API users (in .env).
-- `stack_name`: (default: `"fastapi-project"`) The name of the stack used for Docker Compose labels and project name (no spaces, no periods) (in .env).
-- `secret_key`: (default: `"changethis"`) The secret key for the project, used for security, stored in .env, you can generate one with the method above.
-- `first_superuser`: (default: `"admin@example.com"`) The email of the first superuser (in .env).
-- `first_superuser_password`: (default: `"changethis"`) The password of the first superuser (in .env).
-- `smtp_host`: (default: "") The SMTP server host to send emails, you can set it later in .env.
-- `smtp_user`: (default: "") The SMTP server user to send emails, you can set it later in .env.
-- `smtp_password`: (default: "") The SMTP server password to send emails, you can set it later in .env.
-- `emails_from_email`: (default: `"info@example.com"`) The email account to send emails from, you can set it later in .env.
-- `postgres_password`: (default: `"changethis"`) The password for the PostgreSQL database, stored in .env, you can generate one with the method above.
-- `sentry_dsn`: (default: "") The DSN for Sentry, if you are using it, you can set it later in .env.
-
-## Backend Development
-
-Backend docs: [backend/README.md](./backend/README.md).
-
-## Frontend Development
-
-Frontend docs: [frontend/README.md](./frontend/README.md).
-
-## Deployment
-
-Deployment docs: [deployment.md](./deployment.md).
-
-## Development
-
-General development docs: [development.md](./development.md).
-
-This includes using Docker Compose, custom local domains, `.env` configurations, etc.
-
-## Release Notes
-
-Check the file [release-notes.md](./release-notes.md).
-
-## License
-
-The Full Stack FastAPI Template is licensed under the terms of the MIT license.
